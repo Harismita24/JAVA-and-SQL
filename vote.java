@@ -1,0 +1,18 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Enter the weight:");
+        System.out.println("Enter the age:");
+         Scanner ref=new Scanner(System.in);
+        int a=ref.nextInt();
+        int b=ref.nextInt();
+        System.out.println(a);
+        System.out.println(b);
+        if(a>=50&& b>=18){
+             System.out.println("you are eligible to blood donation validation");
+        }
+        else{
+             System.out.println("you are not eligible to blood donation validation");
+        }
+      
+        }
