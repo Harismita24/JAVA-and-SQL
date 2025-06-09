@@ -1,0 +1,22 @@
+public class HRSystem {
+    public static void main(String[] args) {
+        // Full-time: fixed salary
+        double fullTimePay = 5000;
+
+        // Part-time: hours * rate
+        int partTimeHours = 80;
+        double partTimeRate = 20;
+        double partTimePay = partTimeHours * partTimeRate;
+
+        // Freelancer: hours * rate + bonus
+        int freelancerHours = 100;
+        double freelancerRate = 25;
+        double bonus = 300;
+        double freelancerPay = freelancerHours * freelancerRate + bonus;
+
+        // Output
+        System.out.println("Full-time pay: " + fullTimePay);
+        System.out.println("Part-time pay: " + partTimePay);
+        System.out.println("Freelancer pay: " + freelancerPay);
+    }
+}
