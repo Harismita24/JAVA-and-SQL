@@ -1,0 +1,27 @@
+package program;
+
+public class single {
+	void Message() {
+		System.out.println("sending!!!"); {
+			
+		}
+	}
+}
+class subclass extends single{
+	void view() {
+		System.out.println("received!!!"); {
+			
+		}
+	
+}
+	
+class main{
+	public static void main(String[] args) {
+		subclass ref=new subclass();
+		ref.Message();
+		ref.view();
+	}
+}
+}
+
+
