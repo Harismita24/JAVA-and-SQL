@@ -9,6 +9,7 @@ class ArrayListsProgram {
         arr.add(0, "Hari");
         arr.set(2, "Sudha");
         arr.remove(1);
+ System.out.println(arr.get(3));
         for(Object data:arr){
         System.out.println(data);
         }   
