@@ -6,8 +6,8 @@ class StudentManage {
        HashMap<Integer,String> StudentManage=new HashMap<>();
        //accepts all types of values
        ArrayList<Object> arr=new ArrayList<>();
-        arr.add("Hemamalini");
-        arr.add("Rohini");
+        arr.add("Haish");
+        arr.add("Sudha");
         arr.add("Priya");
         arr.add("Hari");
         arr.add("Dharshini");
@@ -19,12 +19,12 @@ class StudentManage {
         System.out.println(arr);
         System.out.println(StudentManage);
        // add
-        arr.add("Gayathri");
+        arr.add("Ravi");
         arr.add("Kashini");
         
         System.out.println("After adding elements: " + arr);
         //search
-       String searchItem = "Ranjitha";
+       String searchItem = "Saha";
         if (arr.contains(searchItem)) {
             System.out.println(searchItem + " is found in the Studentslist.");
         } else {
