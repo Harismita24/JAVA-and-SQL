@@ -1,0 +1,1142 @@
+Microsoft Windows [Version 10.0.19045.2130]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.37 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show dtabases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dtabases' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| company            |
+| emp                |
+| employee           |
+| information_schema |
+| kgcas              |
+| kgisl              |
+| mysql              |
+| new_database       |
+| performance_schema |
+| sys                |
+| world              |
++--------------------+
+11 rows in set (0.07 sec)
+
+mysql> select * from emp;
+ERROR 1046 (3D000): No database selected
+mysql> use kgisl;
+Database changed
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+28 rows in set (0.00 sec)
+
+mysql> select *
+    -> from ename
+    -> where sal >= 2000;
+ERROR 1146 (42S02): Table 'kgisl.ename' doesn't exist
+mysql> select *
+    -> from emp
+    -> where sal >= 2000;
++-------+-------+-----------+------+------------+---------+------+--------+
+| empno | ename | job       | mgr  | hiredate   | sal     | comm | deptno |
++-------+-------+-----------+------+------------+---------+------+--------+
+|  7566 | JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7698 | BLAKE | MANAGER   | 7839 | 1981-05-01 | 2850.00 | NULL |     30 |
+|  7782 | CLARK | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7788 | SCOTT | ANALYST   | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7839 | KING  | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7902 | FORD  | ANALYST   | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
+|  7566 | JONES | MANAGER   | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7698 | BLAKE | MANAGER   | 7839 | 1981-05-01 | 2850.00 | NULL |     30 |
+|  7782 | CLARK | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7788 | SCOTT | ANALYST   | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7839 | KING  | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7902 | FORD  | ANALYST   | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-------+-----------+------+------------+---------+------+--------+
+12 rows in set (0.00 sec)
+
+mysql> select ename, sal, sal*12
+    -> from emp
+    -> where sal*12 >= 12000;
++--------+---------+----------+
+| ename  | sal     | sal*12   |
++--------+---------+----------+
+| ALLEN  | 1600.00 | 19200.00 |
+| WARD   | 1250.00 | 15000.00 |
+| JONES  | 2975.00 | 35700.00 |
+| MARTIN | 1250.00 | 15000.00 |
+| BLAKE  | 2850.00 | 34200.00 |
+| CLARK  | 2450.00 | 29400.00 |
+| SCOTT  | 3000.00 | 36000.00 |
+| KING   | 5000.00 | 60000.00 |
+| TURNER | 1500.00 | 18000.00 |
+| ADAMS  | 1100.00 | 13200.00 |
+| FORD   | 3000.00 | 36000.00 |
+| MILLER | 1300.00 | 15600.00 |
+| ALLEN  | 1600.00 | 19200.00 |
+| WARD   | 1250.00 | 15000.00 |
+| JONES  | 2975.00 | 35700.00 |
+| MARTIN | 1250.00 | 15000.00 |
+| BLAKE  | 2850.00 | 34200.00 |
+| CLARK  | 2450.00 | 29400.00 |
+| SCOTT  | 3000.00 | 36000.00 |
+| KING   | 5000.00 | 60000.00 |
+| TURNER | 1500.00 | 18000.00 |
+| ADAMS  | 1100.00 | 13200.00 |
+| FORD   | 3000.00 | 36000.00 |
+| MILLER | 1300.00 | 15600.00 |
++--------+---------+----------+
+24 rows in set (0.00 sec)
+
+mysql> select ename, sal, sal*12 as Annual_salary
+    -> from emp
+    -> where sal >= 2000;
++-------+---------+---------------+
+| ename | sal     | Annual_salary |
++-------+---------+---------------+
+| JONES | 2975.00 |      35700.00 |
+| BLAKE | 2850.00 |      34200.00 |
+| CLARK | 2450.00 |      29400.00 |
+| SCOTT | 3000.00 |      36000.00 |
+| KING  | 5000.00 |      60000.00 |
+| FORD  | 3000.00 |      36000.00 |
+| JONES | 2975.00 |      35700.00 |
+| BLAKE | 2850.00 |      34200.00 |
+| CLARK | 2450.00 |      29400.00 |
+| SCOTT | 3000.00 |      36000.00 |
+| KING  | 5000.00 |      60000.00 |
+| FORD  | 3000.00 |      36000.00 |
++-------+---------+---------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from emp where job = 'clerk';
++-------+--------+-------+------+------------+---------+------+--------+
+| empno | ename  | job   | mgr  | hiredate   | sal     | comm | deptno |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select distinct sal
+    -> from emp;
++---------+
+| sal     |
++---------+
+|  800.00 |
+| 1600.00 |
+| 1250.00 |
+| 2975.00 |
+| 2850.00 |
+| 2450.00 |
+| 3000.00 |
+| 5000.00 |
+| 1500.00 |
+| 1100.00 |
+|  950.00 |
+| 1300.00 |
++---------+
+12 rows in set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> where deptno=30 or job='analyst';
++-------+--------+----------+------+------------+---------+---------+--------+
+| empno | ename  | job      | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+----------+------+------------+---------+---------+--------+
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER  | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7788 | SCOTT  | ANALYST  | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7844 | TURNER | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7900 | JAMES  | CLERK    | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST  | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER  | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7788 | SCOTT  | ANALYST  | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7844 | TURNER | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7900 | JAMES  | CLERK    | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST  | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
++-------+--------+----------+------+------------+---------+---------+--------+
+16 rows in set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> where job='clerk' and sal<=1500;
++-------+--------+-------+------+------------+---------+------+--------+
+| empno | ename  | job   | mgr  | hiredate   | sal     | comm | deptno |
++-------+--------+-------+------+------------+---------+------+--------+
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
+|  7369 | SMITH  | CLERK | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7876 | ADAMS  | CLERK | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7900 | JAMES  | CLERK | 7698 | 1981-12-03 |  950.00 | NULL |     30 |
+|  7934 | MILLER | CLERK | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-------+------+------------+---------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> where ename = 'a' and ename = 'e';
+Empty set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> where ename = 'a' and ename = 's';
+Empty set (0.00 sec)
+
+mysql> select ename
+    -> from emp
+    -> where ename like 'a%';
++-------+
+| ename |
++-------+
+| ALLEN |
+| ADAMS |
+| ALLEN |
+| ADAMS |
++-------+
+4 rows in set (0.00 sec)
+
+mysql> select ename
+    -> from emp
+    -> where ename like 'a%n';
++-------+
+| ename |
++-------+
+| ALLEN |
+| ALLEN |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> select ename
+    -> from emp
+    -> where ename like '%h';
++-------+
+| ename |
++-------+
+| SMITH |
+| SMITH |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> select ename
+    -> from emp
+    -> where ename like 'a%5%n';
+Empty set (0.00 sec)
+
+mysql> select ename
+    -> from emp
+    -> where ename like 'a___n';
++-------+
+| ename |
++-------+
+| ALLEN |
+| ALLEN |
++-------+
+2 rows in set (0.00 sec)
+
+mysql> select ename
+    -> from emp
+    -> where ename like '1___5';
+Empty set (0.00 sec)
+
+mysql> select sal
+    -> from emp
+    -> where sal like '1___5';
+Empty set (0.00 sec)
+
+mysql> select sal
+    -> from emp
+    -> where ename like '_____';
++---------+
+| sal     |
++---------+
+|  800.00 |
+| 1600.00 |
+| 2975.00 |
+| 2850.00 |
+| 2450.00 |
+| 3000.00 |
+| 1100.00 |
+|  950.00 |
+|  800.00 |
+| 1600.00 |
+| 2975.00 |
+| 2850.00 |
+| 2450.00 |
+| 3000.00 |
+| 1100.00 |
+|  950.00 |
++---------+
+16 rows in set (0.00 sec)
+
+mysql> select sal
+    -> from emp
+    -> where sal like '_____';
+Empty set (0.00 sec)
+
+mysql> select sal
+    -> from emp
+    -> where sal like '_____';
+Empty set (0.00 sec)
+
+mysql> select sal
+    -> from emp
+    -> where ename like '____';
++---------+
+| sal     |
++---------+
+| 1250.00 |
+| 5000.00 |
+| 3000.00 |
+| 1250.00 |
+| 5000.00 |
+| 3000.00 |
++---------+
+6 rows in set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> where deptno=20 or deptno=30;
++-------+--------+----------+------+------------+---------+---------+--------+
+| empno | ename  | job      | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK    | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER  | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER  | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7788 | SCOTT  | ANALYST  | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7844 | TURNER | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK    | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK    | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST  | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7369 | SMITH  | CLERK    | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER  | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER  | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7788 | SCOTT  | ANALYST  | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7844 | TURNER | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK    | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK    | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST  | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
++-------+--------+----------+------+------------+---------+---------+--------+
+22 rows in set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> where deptno in(10,20,30,40);
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+28 rows in set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> where deptno not in(10,20);
++-------+--------+----------+------+------------+---------+---------+--------+
+| empno | ename  | job      | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+----------+------+------------+---------+---------+--------+
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER  | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7844 | TURNER | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7900 | JAMES  | CLERK    | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7499 | ALLEN  | SALESMAN | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN | SALESMAN | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER  | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7844 | TURNER | SALESMAN | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7900 | JAMES  | CLERK    | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
++-------+--------+----------+------+------------+---------+---------+--------+
+12 rows in set (0.00 sec)
+
+mysql> select*
+    -> from emp
+    -> where deptno not in(10,30);
++-------+-------+---------+------+------------+---------+------+--------+
+| empno | ename | job     | mgr  | hiredate   | sal     | comm | deptno |
++-------+-------+---------+------+------------+---------+------+--------+
+|  7369 | SMITH | CLERK   | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7566 | JONES | MANAGER | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7788 | SCOTT | ANALYST | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7876 | ADAMS | CLERK   | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
+|  7369 | SMITH | CLERK   | 7902 | 1980-12-17 |  800.00 | NULL |     20 |
+|  7566 | JONES | MANAGER | 7839 | 1981-04-02 | 2975.00 | NULL |     20 |
+|  7788 | SCOTT | ANALYST | 7566 | 1982-12-09 | 3000.00 | NULL |     20 |
+|  7876 | ADAMS | CLERK   | 7788 | 1983-01-12 | 1100.00 | NULL |     20 |
+|  7902 | FORD  | ANALYST | 7566 | 1981-12-03 | 3000.00 | NULL |     20 |
++-------+-------+---------+------+------------+---------+------+--------+
+10 rows in set (0.00 sec)
+
+mysql> select*
+    -> from emp
+    -> where job not in('Analyst', 'Manager');
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+18 rows in set (0.00 sec)
+
+mysql> select job, sal, sal*12
+    -> from emp;
++-----------+---------+----------+
+| job       | sal     | sal*12   |
++-----------+---------+----------+
+| CLERK     |  800.00 |  9600.00 |
+| SALESMAN  | 1600.00 | 19200.00 |
+| SALESMAN  | 1250.00 | 15000.00 |
+| MANAGER   | 2975.00 | 35700.00 |
+| SALESMAN  | 1250.00 | 15000.00 |
+| MANAGER   | 2850.00 | 34200.00 |
+| MANAGER   | 2450.00 | 29400.00 |
+| ANALYST   | 3000.00 | 36000.00 |
+| PRESIDENT | 5000.00 | 60000.00 |
+| SALESMAN  | 1500.00 | 18000.00 |
+| CLERK     | 1100.00 | 13200.00 |
+| CLERK     |  950.00 | 11400.00 |
+| ANALYST   | 3000.00 | 36000.00 |
+| CLERK     | 1300.00 | 15600.00 |
+| CLERK     |  800.00 |  9600.00 |
+| SALESMAN  | 1600.00 | 19200.00 |
+| SALESMAN  | 1250.00 | 15000.00 |
+| MANAGER   | 2975.00 | 35700.00 |
+| SALESMAN  | 1250.00 | 15000.00 |
+| MANAGER   | 2850.00 | 34200.00 |
+| MANAGER   | 2450.00 | 29400.00 |
+| ANALYST   | 3000.00 | 36000.00 |
+| PRESIDENT | 5000.00 | 60000.00 |
+| SALESMAN  | 1500.00 | 18000.00 |
+| CLERK     | 1100.00 | 13200.00 |
+| CLERK     |  950.00 | 11400.00 |
+| ANALYST   | 3000.00 | 36000.00 |
+| CLERK     | 1300.00 | 15600.00 |
++-----------+---------+----------+
+28 rows in set (0.00 sec)
+
+mysql> select job, sal, sal*12
+    -> from emp
+    -> where sal*12 job not in('Analyst', 'Manager');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'job not in('Analyst', 'Manager')' at line 3
+mysql> select job, sal, sal*12
+    -> from emp
+    -> from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 3
+mysql> select*,sal*12 'Annual_Salary'
+    -> from emp
+    -> where job not in('Analyst', 'Manager');
++-------+--------+-----------+------+------------+---------+---------+--------+---------------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno | Annual_Salary |
++-------+--------+-----------+------+------------+---------+---------+--------+---------------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |       9600.00 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |      19200.00 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |      15000.00 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |      15000.00 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |      60000.00 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |      18000.00 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |      13200.00 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |      11400.00 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |      15600.00 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |       9600.00 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |      19200.00 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |      15000.00 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |      15000.00 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |      60000.00 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |      18000.00 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |      13200.00 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |      11400.00 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |      15600.00 |
++-------+--------+-----------+------+------------+---------+---------+--------+---------------+
+18 rows in set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> where 1981-12-31 and 1987-01-01;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+28 rows in set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> where 1981-12-01 and 1987-01-01;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+28 rows in set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> select*,sal*12 'Annual_Salary'
+    ->
+    ->
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select*,sal*12 'Annual_Salary'' at line 3
+mysql> select ename,hiredate
+    -> from emp
+    -> where hiredate >'1981-12-31';
++--------+------------+
+| ename  | hiredate   |
++--------+------------+
+| SCOTT  | 1982-12-09 |
+| ADAMS  | 1983-01-12 |
+| MILLER | 1982-01-23 |
+| SCOTT  | 1982-12-09 |
+| ADAMS  | 1983-01-12 |
+| MILLER | 1982-01-23 |
++--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select ename,hiredate
+    -> from emp
+    -> where hiredate > '1981-12-31' and hiredate > '1987-01-01';
+Empty set (0.00 sec)
+
+mysql> select ename,hiredate
+    -> from emp
+    -> where hiredate > '1981-12-31' and hierdate < '1987-01-01';
+ERROR 1054 (42S22): Unknown column 'hierdate' in 'where clause'
+mysql> select ename,hiredate
+    -> from emp
+    -> where hiredate between '1981-12-31' and '1983-01-01';
++--------+------------+
+| ename  | hiredate   |
++--------+------------+
+| SCOTT  | 1982-12-09 |
+| MILLER | 1982-01-23 |
+| SCOTT  | 1982-12-09 |
+| MILLER | 1982-01-23 |
++--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select ename,hiredate
+    -> from emp
+    -> where hiredate > '1981-12-31' and hiredate > '1983-01-01';
++-------+------------+
+| ename | hiredate   |
++-------+------------+
+| ADAMS | 1983-01-12 |
+| ADAMS | 1983-01-12 |
++-------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select ename,hiredate
+    -> from emp
+    -> where hiredate > '1980-12-31' and hierdate < '1983-01-01';
+ERROR 1054 (42S22): Unknown column 'hierdate' in 'where clause'
+mysql> select ename,hiredate
+    -> from emp
+    -> where hiredate between '1980-12-31' and '1983-01-01';
++--------+------------+
+| ename  | hiredate   |
++--------+------------+
+| ALLEN  | 1981-02-20 |
+| WARD   | 1981-02-22 |
+| JONES  | 1981-04-02 |
+| MARTIN | 1981-09-28 |
+| BLAKE  | 1981-05-01 |
+| CLARK  | 1981-06-09 |
+| SCOTT  | 1982-12-09 |
+| KING   | 1981-11-17 |
+| TURNER | 1981-09-08 |
+| JAMES  | 1981-12-03 |
+| FORD   | 1981-12-03 |
+| MILLER | 1982-01-23 |
+| ALLEN  | 1981-02-20 |
+| WARD   | 1981-02-22 |
+| JONES  | 1981-04-02 |
+| MARTIN | 1981-09-28 |
+| BLAKE  | 1981-05-01 |
+| CLARK  | 1981-06-09 |
+| SCOTT  | 1982-12-09 |
+| KING   | 1981-11-17 |
+| TURNER | 1981-09-08 |
+| JAMES  | 1981-12-03 |
+| FORD   | 1981-12-03 |
+| MILLER | 1982-01-23 |
++--------+------------+
+24 rows in set (0.00 sec)
+
+mysql> select *
+    -> from emp
+    -> from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 3
+mysql> select  count(*)
+    -> from emp;
++----------+
+| count(*) |
++----------+
+|       28 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select count(*)
+    -> from emp
+    -> where sal<2000 and deptno=10;
++----------+
+| count(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select deptno,sal
+    -> from emp
+    -> where deptno=10;
++--------+---------+
+| deptno | sal     |
++--------+---------+
+|     10 | 2450.00 |
+|     10 | 5000.00 |
+|     10 | 1300.00 |
+|     10 | 2450.00 |
+|     10 | 5000.00 |
+|     10 | 1300.00 |
++--------+---------+
+6 rows in set (0.00 sec)
+
+mysql> select count(ename)
+    -> from emp
+    -> where sal<2000 and deptno=10;
++--------------+
+| count(ename) |
++--------------+
+|            2 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> select count(*),ename
+    -> from emp
+    -> where sal<2000 and deptno=10;
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'kgisl.emp.ename'; this is incompatible with sql_mode=only_full_group_by
+mysql> select sum(+)
+    -> from emp
+    -> wher;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+from emp
+wher' at line 1
+mysql> select sum(sal)
+    -> from emp
+    -> where job='clerk';
++----------+
+| sum(sal) |
++----------+
+|  8300.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(sal)
+    -> from emp
+    -> ;
++----------+
+| sum(sal) |
++----------+
+| 58050.00 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(sal),ename
+    -> from emp
+    -> where job='clerk';
+ERROR 1140 (42000): In aggregated query without GROUP BY, expression #2 of SELECT list contains nonaggregated column 'kgisl.emp.ename'; this is incompatible with sql_mode=only_full_group_by
+mysql> select sum(sal),ename
+    -> from emp
+    -> where job='clerk'
+    -> group by ename;
++----------+--------+
+| sum(sal) | ename  |
++----------+--------+
+|  1600.00 | SMITH  |
+|  2200.00 | ADAMS  |
+|  1900.00 | JAMES  |
+|  2600.00 | MILLER |
++----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select avg(sal)
+    -> from emp
+    -> from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from emp' at line 3
+mysql> select avg(sal)
+    -> from emp;
++-------------+
+| avg(sal)    |
++-------------+
+| 2073.214286 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(sal),sum(sal),count(sal),max(sal)
+    -> from emp
+    -> where job='president';
++-------------+----------+------------+----------+
+| avg(sal)    | sum(sal) | count(sal) | max(sal) |
++-------------+----------+------------+----------+
+| 5000.000000 | 10000.00 |          2 |  5000.00 |
++-------------+----------+------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(sal),ename
+    -> from emp
+    -> group by ename;
++----------+--------+
+| sum(sal) | ename  |
++----------+--------+
+|  1600.00 | SMITH  |
+|  3200.00 | ALLEN  |
+|  2500.00 | WARD   |
+|  5950.00 | JONES  |
+|  2500.00 | MARTIN |
+|  5700.00 | BLAKE  |
+|  4900.00 | CLARK  |
+|  6000.00 | SCOTT  |
+| 10000.00 | KING   |
+|  3000.00 | TURNER |
+|  2200.00 | ADAMS  |
+|  1900.00 | JAMES  |
+|  6000.00 | FORD   |
+|  2600.00 | MILLER |
++----------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select sum(sal)
+    -> from emp
+    -> group by job;
++----------+
+| sum(sal) |
++----------+
+|  8300.00 |
+| 11200.00 |
+| 16550.00 |
+| 12000.00 |
+| 10000.00 |
++----------+
+5 rows in set (0.00 sec)
+
+mysql> select sum(sal),job
+    -> from emp
+    -> group by job;
++----------+-----------+
+| sum(sal) | job       |
++----------+-----------+
+|  8300.00 | CLERK     |
+| 11200.00 | SALESMAN  |
+| 16550.00 | MANAGER   |
+| 12000.00 | ANALYST   |
+| 10000.00 | PRESIDENT |
++----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select count(deptno)
+    -> from emp
+    -> group by deptno;
++---------------+
+| count(deptno) |
++---------------+
+|            10 |
+|            12 |
+|             6 |
++---------------+
+3 rows in set (0.00 sec)
+
+mysql> select count(deptno),job
+    -> from emp
+    -> group by job;
++---------------+-----------+
+| count(deptno) | job       |
++---------------+-----------+
+|             8 | CLERK     |
+|             8 | SALESMAN  |
+|             6 | MANAGER   |
+|             4 | ANALYST   |
+|             2 | PRESIDENT |
++---------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select avg(sal),mgr
+    -> from emp
+    -> group by mgr;
++-------------+------+
+| avg(sal)    | mgr  |
++-------------+------+
+|  800.000000 | 7902 |
+| 1310.000000 | 7698 |
+| 2758.333333 | 7839 |
+| 3000.000000 | 7566 |
+| 5000.000000 | NULL |
+| 1100.000000 | 7788 |
+| 1300.000000 | 7782 |
++-------------+------+
+7 rows in set (0.00 sec)
+
+mysql> select count(*),hiredate
+    -> from emp
+    -> group by hiredate;
++----------+------------+
+| count(*) | hiredate   |
++----------+------------+
+|        2 | 1980-12-17 |
+|        2 | 1981-02-20 |
+|        2 | 1981-02-22 |
+|        2 | 1981-04-02 |
+|        2 | 1981-09-28 |
+|        2 | 1981-05-01 |
+|        2 | 1981-06-09 |
+|        2 | 1982-12-09 |
+|        2 | 1981-11-17 |
+|        2 | 1981-09-08 |
+|        2 | 1983-01-12 |
+|        4 | 1981-12-03 |
+|        2 | 1982-01-23 |
++----------+------------+
+13 rows in set (0.00 sec)
+
+mysql> select sum(job)
+    -> group by hiredate;
+ERROR 1054 (42S22): Unknown column 'job' in 'field list'
+mysql> select sum(job),salesman
+    -> from emp;
+ERROR 1054 (42S22): Unknown column 'salesman' in 'field list'
+mysql> select sum(comm),job
+    -> from emp
+    -> group by job;
++-----------+-----------+
+| sum(comm) | job       |
++-----------+-----------+
+|      NULL | CLERK     |
+|   4400.00 | SALESMAN  |
+|      NULL | MANAGER   |
+|      NULL | ANALYST   |
+|      NULL | PRESIDENT |
++-----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select sum(comm),job
+    -> from emp
+    -> group by salesman;
+ERROR 1054 (42S22): Unknown column 'salesman' in 'group statement'
+mysql> select sum(comm),job
+    -> from emp
+    -> where job='salesman'
+    -> group by job;
++-----------+----------+
+| sum(comm) | job      |
++-----------+----------+
+|   4400.00 | SALESMAN |
++-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> select sum(sal)
+    -> from emp
+    -> group by job
+    -> having sum(sal)>5000;
++----------+
+| sum(sal) |
++----------+
+|  8300.00 |
+| 11200.00 |
+| 16550.00 |
+| 12000.00 |
+| 10000.00 |
++----------+
+5 rows in set (0.00 sec)
+
+mysql> select sum(sal),job
+    -> from emp
+    -> group by job
+    -> having sum(sal)>5000;
++----------+-----------+
+| sum(sal) | job       |
++----------+-----------+
+|  8300.00 | CLERK     |
+| 11200.00 | SALESMAN  |
+| 16550.00 | MANAGER   |
+| 12000.00 | ANALYST   |
+| 10000.00 | PRESIDENT |
++----------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> select count(*),deptno
+    -> from emp
+    -> where job='clerk'
+    -> group by deptno
+    -> having count(*)>=2;
++----------+--------+
+| count(*) | deptno |
++----------+--------+
+|        4 |     20 |
+|        2 |     30 |
+|        2 |     10 |
++----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select count(*),deptno,job
+    -> from emp
+    -> where job='clerk'
+    -> group by deptno,job
+    -> having count(*)>=2;
++----------+--------+-------+
+| count(*) | deptno | job   |
++----------+--------+-------+
+|        4 |     20 | CLERK |
+|        2 |     30 | CLERK |
+|        2 |     10 | CLERK |
++----------+--------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select avg(sal),deptno
+    -> from emp
+    -> group by deptno
+    -> having avg(sal)>=2000;
++-------------+--------+
+| avg(sal)    | deptno |
++-------------+--------+
+| 2175.000000 |     20 |
+| 2916.666667 |     10 |
++-------------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select count(*),mgr
+    -> from emp
+    -> group by mgr
+    -> having count(*)>=2;
++----------+------+
+| count(*) | mgr  |
++----------+------+
+|        2 | 7902 |
+|       10 | 7698 |
+|        6 | 7839 |
+|        4 | 7566 |
+|        2 | NULL |
+|        2 | 7788 |
+|        2 | 7782 |
++----------+------+
+7 rows in set (0.00 sec)
+
+mysql> select sum(comm),job
+    -> from emp
+    -> group by job
+    -> having sum(comm)>=1000;
++-----------+----------+
+| sum(comm) | job      |
++-----------+----------+
+|   4400.00 | SALESMAN |
++-----------+----------+
+1 row in set (0.00 sec)
+
+mysql> show table emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'emp' at line 1
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+28 rows in set (0.00 sec)
+
+mysql>mysql> select sum(comm),job,ename
+    -> from emp
+    -> group by job,ename
+    -> having sum(comm)>=1000;
++-----------+----------+--------+
+| sum(comm) | job      | ename  |
++-----------+----------+--------+
+|   1000.00 | SALESMAN | WARD   |
+|   2800.00 | SALESMAN | MARTIN |
++-----------+----------+--------+
+2 rows in set (0.00 sec)
+
+mysql>
