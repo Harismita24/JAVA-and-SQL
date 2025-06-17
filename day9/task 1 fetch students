@@ -1,0 +1,53 @@
+ INSERT  INTO student(sname,smark)values
+    -> ('Priya',95),
+    -> ('Harish',85),
+    -> ('sumi',70);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> delete from student
+    -> where sname = 'Kalia';
+Query OK, 2 rows affected (0.00 sec)
+
+mysql> select * from student;
++--------+-------+
+| sname  | smark |
++--------+-------+
+| raju   |    69 |
+| Priya  |    95 |
+| Harish |    85 |
+| sumi   |    70 |
++--------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select max(smark),sname
+    -> from student,
+    -> group by sname,
+    -> having max(smark)>80;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group by sname,
+having max(smark)>80' at line 3
+mysql> select max(smark)
+    -> from student,
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> select max(smark)
+    -> from student
+    -> group by smark,
+    -> having max(smark)>80;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'having max(smark)>80' at line 4
+mysql> select *
+    -> from student
+    -> where smark>80;
++--------+-------+
+| sname  | smark |
++--------+-------+
+| Priya  |    95 |
+| Harish |    85 |
++--------+-------+
+2 rows in set (0.00 sec)
+
+
+
+
+
+
