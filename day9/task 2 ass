@@ -1,0 +1,67 @@
+
+mysql> create table course(
+    -> scourse varchar(15),
+    -> sfees int
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> alter course
+    -> add sname varchar(20);
+mysql> INSERT INTO course(scourse,sfees,sname)values
+    -> ('FSD', 870000,'Jatku'),
+    -> ('Finance', 45000,'Sumi'),
+    -> ('FSD', 870000,'Jatku'),
+    -> ('Al and ml', 100000,'Indhumathi'),
+    -> ('Cyber Security', 85000,'Hema'),
+    -> ('BCA',35000,'Harish'),
+    -> ('mca',97000,'Hari');
+Query OK, 7 rows affected (0.00 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> select * from course;
++----------------+--------+------------+
+| scourse        | sfees  | sname      |
++----------------+--------+------------+
+| FSD            | 870000 | Jatku      |
+| Finance        |  45000 | Sumi       |
+| FSD            | 870000 | Jatku      |
+| Al and ml      | 100000 | Indhumathi |
+| Cyber Security |  85000 | Hema       |
+| BCA            |  35000 | Harish     |
+| mca            |  97000 | Hari       |
++----------------+--------+------------+
+7 rows in set (0.00 sec)
+
+mysql> select scourse
+    -> from course
+    -> order by sfees asc;
++----------------+
+| scourse        |
++----------------+
+| BCA            |
+| Finance        |
+| Cyber Security |
+| mca            |
+| Al and ml      |
+| FSD            |
+| FSD            |
++----------------+
+7 rows in set (0.00 sec)
+
+mysql> select sfees
+    -> from course
+    -> order by sfees asc;
++--------+
+| sfees  |
++--------+
+|  35000 |
+|  45000 |
+|  85000 |
+|  97000 |
+| 100000 |
+| 870000 |
+| 870000 |
++--------+
+7 rows in set (0.00 sec)
+
+mysql>
