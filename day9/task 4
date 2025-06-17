@@ -1,0 +1,57 @@
+create table Student(
+	Roll_number int,
+	Student_name varchar(10),
+	Book_name varchar(15),
+	Courses varchar(30),
+	Courses_fees int
+);
+INSERT INTO Student (Roll_number, Student_name, Book_name, Courses, Courses_fees)
+VALUES 
+(0123, 'Abl', 'java_Basics', 'Full_Stack', 15000),
+(2345, 'hema', 'Java_Scripts', 'Web_development', 13000),
+(0356, 'hari', 'C++', 'Software_Developement', 20000),
+(0443, 'sumi', 'Linux', 'AWS', 17000);
+
+
+mysql> select* from Student;
++-------------+--------------+--------------+-----------------------+--------------+
+| Roll_number | Student_name | Book_name    | Courses               | Courses_fees |
++-------------+--------------+--------------+-----------------------+--------------+
+|         123 | Abi      | java_Basics  | Full_Stack            |        15000 |
+|        2345 | hari        | Java_Scripts | Web_development       |        13000 |
+|         356 | sumi      | C++          | Software_Developement |        20000 |
+|         443 | hema       | Linux        | AWS                   |        17000 |
++-------------+--------------+--------------+-----------------------+--------------+
+
+select* from Student            // ordering course fees
+    order by  Courses_fees asc;
++-------------+--------------+--------------+-----------------------+--------------+----------------+
+| Roll_number | Student_name | Book_name    | Courses               | Courses_fees | Students_marks |
++-------------+--------------+--------------+-----------------------+--------------+----------------+
+|         123 | Abi          | java_Basics  | Full_Stack            |        15000 |             87 |
+|        2345 | Abd          | Java_Scripts | Web_development       |        13000 |             90 |
+|         356 | abi          | C++          | Software_Developement |        20000 |             75 |
+|         443 | sumi       | Linux        | AWS                   |        17000 |             60 |
++-------------+--------------+--------------+-----------------------+--------------+----------------+
+
+
+
+
+ select* from Student          // using like operator
+     where Book_name like 'L%x';
++-------------+--------------+-----------+---------+--------------+
+| Roll_number | Student_name | Book_name | Courses | Courses_fees |
++-------------+--------------+-----------+---------+--------------+
+|         443 | sumi      | Linux     | AWS     |        17000 |
++-------------+--------------+-----------+---------+--------------+
+
+
+
+ select*from Student		// mark>80
+    -> where Students_marks>80;
++-------------+--------------+--------------+-----------------+--------------+----------------+
+| Roll_number | Student_name | Book_name    | Courses         | Courses_fees | Students_marks |
++-------------+--------------+--------------+-----------------+--------------+----------------+
+|         123 | abi     | java_Basics  | Full_Stack      |        15000 |             87 |
+|        2345 | sumi        | Java_Scripts | Web_development |        13000 |             90 |
++-------------+--------------+--------------+-----------------+--------------+----------------+
