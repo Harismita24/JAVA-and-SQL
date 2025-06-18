@@ -1,0 +1,114 @@
+Microsoft Windows [Version 10.0.19045.2130]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 15
+Server version: 8.0.37 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use kgisl
+Database changed
+mysql> select * table emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table emp' at line 1
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+28 rows in set (0.00 sec)
+
+mysql> select e1.ename emp_name ,e2.ename mgr_name
+    -> from emp e1,emp e2
+    -> where e1.mgr = e2.empno AND e1.job='clerk';
++----------+----------+
+| emp_name | mgr_name |
++----------+----------+
+| JAMES    | BLAKE    |
+| JAMES    | BLAKE    |
+| MILLER   | CLARK    |
+| MILLER   | CLARK    |
+| ADAMS    | SCOTT    |
+| ADAMS    | SCOTT    |
+| SMITH    | FORD     |
+| SMITH    | FORD     |
+| JAMES    | BLAKE    |
+| JAMES    | BLAKE    |
+| MILLER   | CLARK    |
+| MILLER   | CLARK    |
+| ADAMS    | SCOTT    |
+| ADAMS    | SCOTT    |
+| SMITH    | FORD     |
+| SMITH    | FORD     |
++----------+----------+
+16 rows in set (0.00 sec)
+
+mysql> select e1.ename emp_name ,e2.sal sal_mgr
+    -> ;
+ERROR 1109 (42S02): Unknown table 'e1' in field list
+mysql> select e1.ename emp_name ,e2.sal mgr_sal
+    -> from emp e1,emp e2
+    -> where e1.mgr=e2.empno and e2.sal>2300 and e1.sal>2300;
++----------+---------+
+| emp_name | mgr_sal |
++----------+---------+
+| FORD     | 2975.00 |
+| SCOTT    | 2975.00 |
+| FORD     | 2975.00 |
+| SCOTT    | 2975.00 |
+| CLARK    | 5000.00 |
+| BLAKE    | 5000.00 |
+| JONES    | 5000.00 |
+| CLARK    | 5000.00 |
+| BLAKE    | 5000.00 |
+| JONES    | 5000.00 |
+| FORD     | 2975.00 |
+| SCOTT    | 2975.00 |
+| FORD     | 2975.00 |
+| SCOTT    | 2975.00 |
+| CLARK    | 5000.00 |
+| BLAKE    | 5000.00 |
+| JONES    | 5000.00 |
+| CLARK    | 5000.00 |
+| BLAKE    | 5000.00 |
+| JONES    | 5000.00 |
++----------+---------+
+20 rows in set (0.00 sec)
+
+mysql>
