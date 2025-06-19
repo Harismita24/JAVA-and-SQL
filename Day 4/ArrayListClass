@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+//Collections
+class ArrayListClass {
+    public static void main(String[] args) {
+       // int[] arr =new int[5];//declare the array
+       ArrayList<Integer> arr=new ArrayList();
+       //accepts all types of values
+       ArrayList<Object> arr2=new ArrayList();
+        //arr.add(10);
+        //arr.add(20);
+        //arr.add(30);
+        //arr.add(40);
+        //arr.add(50);
+        //to iterate the objects
+        //arr.forEach(num->System.out.println(num*num));
+        //validate the voting (age)
+         arr.forEach((age->{
+             if(age>=18){
+                  System.out.println("Allowed");
+             }else{
+             System.out.println("Not Allowed");
+             }
+        //arr2.add("Hi Java");
+         //System.out.println(arr);
+        //System.out.println(arr2);
+    });
+}
+    

@@ -1,0 +1,28 @@
+//Exception Handing
+//Handling by JVM
+class Arrayindex {
+    public static void main(String[] args) {
+        try{
+        int[] num={1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+         System.out.println(num[10]);
+        }
+      catch(Exception e){
+       System.out.println("error cleared");
+        }
+        finally{
+             System.out.println("The try catch is finished.");
+        }
+    }
+}
+//example
+class Grade{
+    public static void main(String[] args) {
+       
+        try{
+            int i=(Integer) null;
+             System.out.println(i);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+}
