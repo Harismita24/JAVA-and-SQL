@@ -1,0 +1,13 @@
+class Main {
+    
+    public static void Details(String name, String job, String Package) {
+        System.out.println("Hi"+" "+name+ " "+job+""+" "+Package);
+       
+    }
+   
+    public static void main(String[] args) {
+        Details("john","developer","4lpa");
+        Details("priya","developer","4lpa");
+        
+    }
+}
