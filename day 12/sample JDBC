@@ -1,0 +1,43 @@
+package mysqlprog;
+import java.sql.*;
+public class jdbcmain {
+
+	public static void main(String[] args) throws Exception {
+		String Url="jdbc:mysql://localhost:3306/kgisl";
+		String username="root";
+		String Password="Kgisl@123";
+				
+				Connection connect=DriverManager.getConnection(Url,username,Password);
+				System.out.println("Driver loader");
+				
+				int sid=3;
+				String sname="IMS";
+				
+				
+				String sql="insert into course values(?,?)";
+				PreparedStatement st = connect.prepareStatement(sql);
+				st.setInt(1, sid);
+				st.setString(2, sname);
+				
+				st.executeUpdate();
+				System.out.println("data inserted done using prepared statement");
+				connect.close();
+				
+				int val =st.executeUpdate(sql);
+				System.out.println("inserted "+" "+val+"rows");
+				// System.out.println("Table created Successfully");
+				
+			/*	ResultSet rs=st.executeQuery(sql);
+				while(rs.next()) {
+					System.out.println(rs.getString(1));
+					
+				}
+				rs.next();
+				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" ");
+				rs.next();
+				System.out.println(rs.getInt(1)+" "+rs.getString(2)+" "+rs.getString(3)+" ");
+				*/
+
+	}
+
+}
