@@ -1,0 +1,21 @@
+import java.util.Scanner;
+class Main {
+    int marks;
+   
+    public static void main(String[] args) {
+        Scanner s= new Scanner(System.in);
+        System.out.println("Enter the Student Name:");
+        String a=s.nextLine();
+        System.out.println("Enter the Physics Mark:");
+        int b=s.nextInt();
+        System.out.println("Enter the Chemistry Mark:");
+         int c=s.nextInt();
+          System.out.println("Enter the Biology Mark:");
+        int d=s.nextInt();
+         int total=b+c+d;
+     System.out.println("Total Marks:"+" "+total);
+       int avg= total/3;
+       System.out.println("Aveage:"+" "+avg);
+        
+    }
+}
