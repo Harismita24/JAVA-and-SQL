@@ -1,0 +1,47 @@
+//StringBuffer-one Operation can perform
+//part of the string-1.substring
+import java.lang.*;
+public class StringBuffer{
+    public static void main(String[] args) {
+        StringBuffer sb=new StringBuffer("Hello java");
+        int a=sb.substring(6,10);
+        System.out.println(a);
+    }
+}
+//output:java
+//2.Replace
+public class StringBuffer{
+    public static void main(String[] args) {
+        StringBuffer sb=new StringBuffer("Hello java");
+        int a=sb.replace(6,10,"world");
+        System.out.println(a);
+    }
+}
+//output:Hello world
+//3.Length
+public class StringBuffer{
+    public static void main(String[] args) {
+        StringBuffer sb=new StringBuffer("Hello java");
+        int a=sb.length();
+        System.out.println(a);
+    }
+}
+//output:10
+//4.tostring
+public class StringBuffer{
+    public static void main(String[] args) {
+        StringBuffer sb=new StringBuffer("123");
+        String a=sb.tostring();
+        System.out.println(a);
+    }
+}
+//output:
+//Example
+class reserves{
+    public static void main(String[] args) {
+      StringBuffer sb=new StringBuffer("Hello java");
+        sb.reverse();
+        System.out.println(sb);
+        
+    }
+}
