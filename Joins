@@ -1,0 +1,111 @@
+Joins:
+types of joins
+                                        1)Cartesian Join / Cross Join
+
+             ->whole table will be merged with table 2's first record 
+Ansi(AMERICAN NATIONAL STANDARAD INSTITUTION):
+            SYNTAX:
+                 select column_name
+                 from table_name1 join name table_name2.
+                on <filter condition>
+example:
+select *
+from emp cross join dept;
+
+oracle:
+select columnname
+from tablename1,tablename2;
+
+                                                      2)Inner join/equi join
+
+         ->It's used to obtain only matching records
+join condition:
+         ->it's a condition on which the two tables are merged.
+       SYNTAX:
+             tablename1.columnname = table name2.columnname.
+Ansi:
+  select column_name
+  from table_name1 Inner join table_name2
+  on <join_condition>;
+
+oracle:
+     select column_name
+     from table_name1 , table_name2
+     on <join_condition>;
+
+ex:
+select*
+from emp inner join dept
+On emp . deptno = dept . deptno;
+
+1) Name of the employee and location?
+      select ename,loc
+      from emp,dept
+      where emp.deptno=dept.deptno;
+2)dname and salary for all the employee working in accounting?
+       select dname,sal
+       from dept,emp
+      where emp.deptno=dept.deptno and dname='Accounting';
+
+                                                              3)outer join:
+      ->To match rows between tables along with unmatched rows.
+types:
+   ->left outer join 
+        ->It's used to obtain the unmatched records from the left table with the matched records.
+syntax:
+      select column_name
+      from table_name1 left[outer] join table_name2
+      on <filter conditon>
+ex:
+select*
+from emp left outer join dept
+On emp.deptno=dept.deptno;
+
+   ->right outer join
+eg:
+select*
+from emp right outer join dept
+On emp.deptno=dept.deptno;
+
+   ->full outer join 
+eg:
+select*
+from emp full outer join dept
+On emp.deptno=dept.deptno;
+
+                                                                  4)Natural join:
+ ->It behaves as "inner join" of there is relation between 
+   the Else it behaves as "cross join".
+SYNTAX:
+ select column_name
+ from table name1 natural join table name2;
+
+                                                                              5)Self join
+  ->joining the table itself or joining the same table is known as self join.
+
+Ansi:
+select column_name
+from table name t1 join table name t2
+On<join_condition>;
+
+oracle:
+select column_name
+from table name t1 join table name t2
+On<join_condition>;
+
+join condition:
+e1.mgr=e2.emp no;
+
+E1=>employee details
+E2=>reporting manager details
+Example:
+1) name of the employee and his managers name if employee working as clerk?
+Answer:
+    select e1.ename emp_name,e2.ename mgr_name
+    from emp e1,emp e2
+   where e1.mrg=e2.empno and e1.job='CLERK';
+2) name of the employee and manager salary if employee and manager both earn more than 2300?
+Answer:
+ select e1.ename emp_name,e2.sal mgr_sal
+from emp e1,emp e2
+where e1.mgr=e2.empno e2.sal>2300 and e1.sal>2300;
