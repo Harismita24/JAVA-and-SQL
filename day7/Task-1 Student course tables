@@ -1,0 +1,29 @@
+ create table Student(
+    Sname varchar[40]
+  );
+  insert into Student(Sname)
+  values('Hema');
+ insert into Student(Sname)
+  values('Priya');
+ insert into Student(Sname)
+ values('Sri');
+ insert into Student(Sname)
+ values('Raj'); 
+insert into Student(Sname)
+  values('rome');
+
+
+ create table Course(
+  Cname varchar(40)
+  );
+insert into Course
+values('java');
+insert into Course
+values('mysql');
+insert into Course
+values('phyton');
+insert into Course
+values('sql');
+insert into Course
+  values('c++');
+update student set sname='priya' where sname='hari priya';
