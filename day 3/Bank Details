@@ -1,0 +1,47 @@
+class sbiAcc {
+    private String Accholder;
+    private int Balance;
+    public String withdraw;
+    sbiAcc(String Accholder,int Balance,int withdraw ){
+    this.Accholder=Accholder;
+    this.Balance=Balance;
+
+}
+public String getAccholder(){
+    return Accholder;
+}
+public int getBalance(){
+    return Balance;
+}
+public void deposit(int dep){
+    if(Balance > 0){
+        Balance +=dep;
+        //Balance = balance + dep
+        System.out.println("Deposited Amount:"+dep);
+        System.out.println("Now Current Balance:"+Balance);
+    }
+}
+public void setAccholder(String Accholder){
+    this.Accholder=Accholder;
+}
+public void setwithdraw(int withdraw){
+    Balance -= withdraw;
+    System.out.println("withdrawn amount:"+withdraw);
+}
+
+}
+public class BankDetails{
+    public static void main(String[] args) {
+        sbiAcc ac=new sbiAcc("John",20000,1000);
+         System.out.println("Account holder name:"+ac.getAccholder());
+         
+    ac.setAccholder("Hema");
+    
+          System.out.println("update account holder:"+ac.getAccholder());
+          System.out.println("Balance:"+ac.getBalance());
+          ac.deposit(3000);
+          ac.setwithdraw(1000);
+            System.out.println("Avail Balance:"+ac.getBalance());
+         
+    } 
+    }

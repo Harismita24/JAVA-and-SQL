@@ -1,0 +1,36 @@
+class mark{
+    private String name;
+    private int mark;
+
+    mark(String name,int mark){
+    this.name=name;
+    }
+    public String getname(){
+    return name;
+}
+public int getmark(){
+    return mark;
+}
+public void getresult(int mark){
+    if(mark> 0){
+        mark+=mark;
+    System.out.println("Result:"+mark);
+        
+    }
+}
+public void setname(String name){
+    this.name=name;
+}
+public void setmark(int mark){
+    this.mark=mark;
+}
+ public class marks{
+    public static void main(String[] args) {
+        mark ac=new mark("John",405);
+         System.out.println("Student Name:"+ac.getname());
+         ac.setmark(405);
+         System.out.println("Student marks:"+ac.getmark());
+          System.out.println("Student result:"+ac.getresult());
+}
+}
+}

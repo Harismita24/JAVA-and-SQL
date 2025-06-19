@@ -1,0 +1,29 @@
+public class laptop {
+    String model;
+    String ram;
+    //parameterized constructor
+     laptop(String model,String ram){
+         this.model=model;
+         this.ram=ram;
+         System.out.println("laptop:"+" "+model+" "+ram);
+     }
+      laptop(laptop copy){
+              this.model=copy.model;
+              this.ram=copy.ram;
+         
+         }
+     void Display(){
+     System.out.println("laptop:"+" "+model+" "+ram);
+}
+    public static void main(String[] args) {
+     laptop ref=new laptop("Apple","SO-DIMM ");
+     
+     //COPY CONSTRUCTOR
+     laptop ref2=new laptop(ref);
+     System.out.println("Copy constructor constructor:");
+    ref.Display();
+    ref2.Display();
+
+}
+    
+}

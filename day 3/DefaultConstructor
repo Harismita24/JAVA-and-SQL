@@ -1,0 +1,21 @@
+//class computer{
+    //public static void main(String[] args) {
+      //  System.out.println("my computer");
+    //}
+//}
+//class laptop {
+ //   public static void main(String[] args) {
+//        System.out.println("my laptop");
+//    }
+//}
+public class DefaultConstructor{
+     DefaultConstructor(){
+         System.out.println("DefaultConstructor");
+         
+}
+    public static void main(String[] args){
+        //to create object
+        //classname reference variable= new classname();
+        DefaultConstructor ref=new DefaultConstructor();
+    }
+}
