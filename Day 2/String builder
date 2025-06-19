@@ -1,0 +1,37 @@
+//String Bulider types
+//1.append
+class StringBulider{
+    public static void main(String[] args) {
+        StringBulider sb=new StringBulider("Hello");
+        sb.append("World");
+        System.out.println(sb);
+    }
+}
+//output:hello World
+//2.insert
+class StringBulider{
+    public static void main(String[] args) {
+        StringBulider sb=new StringBulider("Java");
+        sb.insert(4,"Programming");
+        System.out.println(sb);
+    }
+}
+//Output:Java programming
+//3.delete
+class StringBulider{
+    public static void main(String[] args) {
+        StringBulider sb=new StringBulider("Hello World");
+        sb.delete(5,11);
+        System.out.println(sb);
+    }
+}
+//Output:Hello
+//4.reserve
+class StringBulider{
+    public static void main(String[] args) {
+        StringBulider sb=new StringBulider("Hello");
+        sb.reserve();
+        System.out.println(sb);
+    }
+}
+//output:olleh
