@@ -1,0 +1,20 @@
+CREATE TABLE products (id INT, name VARCHAR(50));
+CREATE TABLE customers (id INT, name VARCHAR(50));
+CREATE TABLE sales (
+    id INT,
+    product_id INT,
+    customer_id INT,
+    region VARCHAR(20),
+    sale_date DATE,
+    amount DECIMAL(10,2)
+);
+INSERT INTO products VALUES (1, 'Laptop'), (2, 'Phone');
+INSERT INTO customers VALUES (1, 'Alice'), (2, 'Bob');
+INSERT INTO sales VALUES
+(1, 1, 1, 'North', '2025-06-01', 1200),
+(2, 2, 2, 'South', '2025-06-02', 800),
+(3, 1, 2, 'North', '2025-06-03', 1300);
+SELECT p.name, SUM(s.amount) AS total_sales
+FROM sales s
+JOIN products p ON s.product_id = p.id
+GROUP BY p.name;
