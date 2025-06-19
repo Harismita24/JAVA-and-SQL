@@ -1,0 +1,60 @@
+import java.util.Scanner;
+
+public class Task3_SplitWords {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a sentence: ");
+        String sentence = sc.nextLine();
+
+        String[] words = sentence.split("\\s+");
+        System.out.println("Words in sentence:");
+        for (String word : words) {
+            System.out.println(word);
+        }
+    }
+}
+
+import java.util.Scanner;
+
+public class StringAnalyzer {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input sentence
+        System.out.println("Enter a sentence:");
+        String input = sc.nextLine();
+
+        // Convert to lowercase for easier vowel checking
+        String lowerInput = input.toLowerCase();
+
+        int vowelCount = 0;
+        int charCount = 0;
+
+        for (int i = 0; i < lowerInput.length(); i++) {
+            char ch = lowerInput.charAt(i);
+
+            if (ch != ' ') {
+                charCount++; // Count non-space characters
+            }
+
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                vowelCount++;
+            }
+        }
+
+        // Splitting sentence into words
+        String[] words = input.split(" ");
+        String longestWord = "";
+
+        for (String word : words) {
+            if (word.length() > longestWord.length()) {
+                longestWord = word;
+            }
+        }
+
+        // Output
+        System.out.println("Total characters (excluding spaces): " + charCount);
+        System.out.println("Number of vowels: " + vowelCount);
+        System.out.println("Longest word: " + longestWord);
+    }
+}
