@@ -1,0 +1,151 @@
+JDBC Connectivity:
+
+JDBC Connectivity downloading:-
+-> Download jar file (mavenrepository)
+->  create a java project-add
+-> Right click->click bulid path->configuration bulid path->libraries->class path->Add External Path->Apply and Close
+Steps:
+
+Step-1)Register device:
+package JDBCCONNECTIVITY;
+
+public class jdbcmain {
+	
+               public static void main(String[] args) throws ClassNotFoundException {
+            	   
+            	   Class.forName("com.mysql.cj.jdbc.Driver");
+            	   System.out.println("Driver Loaded");
+               }
+	
+}
+
+Step-2)Get Connection:
+package JDBCCONNECTIVITY;
+
+import java.sql.*;
+
+public class jdbcmain {
+	
+               public static void main(String[] args) throws Exception {
+            	   
+            	   //Class.forName("com.mysql.cj.jdbc.Driver");
+            	   String Url="jdbc:mysql://localhost:3306/kgcasbcact";
+            	   String username="root";
+            	   String password="";
+            	   
+            	   Connection connect=DriverManager.getConnection(Url, username, password); 
+            	   System.out.println("Driver Loaded");
+               }
+	
+}
+Step-3)Create Statement:
+package JDBCCONNECTIVITY;
+
+import java.sql.*;
+
+public class jdbcmain {
+	
+               public static void main(String[] args) throws Exception {
+            	   
+            	   //Class.forName("com.mysql.cj.jdbc.Driver");
+            	   
+            	   String Url="jdbc:mysql://localhost:3306/kgcas";
+            	   String username="root";
+            	   String password="Kgisl@123";
+            	   
+            	   Connection connect=DriverManager.getConnection(Url, username, password); 
+            	   System.out.println("Driver Loaded");
+            	   
+            	   Statement st=connect.createStatement();
+               }
+	
+}
+Step-4)Excecute Query :excecute the statement
+     we have option
+1)executeQuery()-select statement (Dql operations)
+Return type must be in resultSet
+2)executeUpdate()-Dml or DDl operations
+Return type must be in integer
+3)execute()-all operations
+Return type must be in boolean
+
+Example Program:
+package JDBCCONNECTIVITY;
+
+import java.sql.*;
+
+public class jdbcmain {
+
+	public static void main(String[] args) throws Exception {
+		// step-1 Register
+		// Class.forName("com.mysql.cj.jdbc.Driver");
+
+		String Url = "jdbc:mysql://localhost:3306/kgcas";
+		String username = "root";
+		String password = "Kgisl@123";
+
+		/**************Important*******Connection connect = DriverManager.getConnection(Url, username, password);
+		System.out.println("Driver Loaded");
+
+		Statement st = connect.createStatement();**************************Important**************************/
+------------------------------------------------------------------------------------------------------------------
+//execute Update using it:
+--------------------------------------------------------------------------------------------------------------------
+//create a table
+String sql = "create table course(cid int,cname varchar(20))";
+		int val=st.executeUpdate(sql);
+		
+		//System.out.println("Inserted"+" "+val+"rows");
+System.out.println("table created successfully");
+----------------------------------------------------------------------------------------------------------------------
+		//String sql = "select * from emp";
+//String sql = "select ename from emp where sal>=2000";
+----------------------------------------------------------------------------------------------------------------------
+//insert a record in a table
+String sql = "insert into course values(01,'FSD');
+    int val=st.executeUpdate(sql);
+	System.out.println("Inserted"+" "+val+"rows");
+------------------------------------------------------------------------------------------------------------------
+//update a record in a table
+String sql = "update course set cname='WD' where cid=01");
+int val=st.executeUpdate(sql);
+	System.out.println("Inserted"+" "+val+"rows");
+-------------------------------------------------------------------------------------------------------------------
+// whole delete a record in a table
+String sql = "drop delete course";
+int val=st.executeUpdate(sql);
+	System.out.println("Inserted"+" "+val+"rows");
+---------------------------------------------------------------------------------------------------------------------------
+//Prepare Statement using executeUpdate();
+int cid=03;
+String cname="IMS";
+
+String sql = "insert into course values(?,?)";
+PreparedStatement st = connect.prepareStatement(sql);
+st.setInt(1,cid);
+st.setString(2,cname);
+
+st.executeUpdate();
+System.out.println("data inserted done in prepared statement");
+----------------------------------------------------------------------------------------------------------------------------
+
+		// Step-4 Execute Query
+		ResultSet rs = st.executeQuery(sql);
+
+   //using while loop
+   while(rs.next()) {
+			System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3));
+//System.out.println(rs.getString(2));
+		}
+		//rs.next();
+		//System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3));
+		//rs.next();
+		//System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3));
+	}
+//step-5:close connection
+connect.close();
+}
+Step-5)Close Connection:
+
+connect.close();
+        
