@@ -1,0 +1,58 @@
+create table course4(
+ name varchar(40),
+sal int,
+course varchar(40),
+  fee int
+);
+
+insert into course4 values('sneha',25000,'computer application',24000);
+insert into course4 values('pavi',20000,'cyber security',50000);
+insert into course4 values('hari',45000,'computer science',35000);
+insert into course4 values('hema',65000,'aritificial intelligence',24000);
+insert into course4 values('kavi',55000,'information technology',35000);
+
+
+select count(*),course,name
+from Course4
+ group by course
+
+create table course5(
+ name varchar(40),
+sal int,
+dept varchar(40),
+  fee int
+
+);
+
+insert into course5 values('sneha',25000,'computer application',24000);
+insert into course5 values('pavi',20000,'cyber security',50000);
+insert into course5 values('hari',45000,'computer science',35000);
+insert into course5 values('hema',65000,'aritificial intelligence',24000);
+insert into course5 values('kavi',55000,'information technology',35000);
+
+select avg(sal),dept
+from Course5
+group by dept
+having avg(sal)>=25000;
+
+
+//task3
+
+create table product1(
+ product varchar(40),
+price int
+);
+
+insert into product1 values('dresses',25000);
+insert into product1 values('funiture',25000);
+insert into product1 values('steel',35000);
+
+
+
+
+select min(price),product
+from product1
+where price;
+select max(price),product
+from product1
+where price;
