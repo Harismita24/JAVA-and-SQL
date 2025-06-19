@@ -1,0 +1,32 @@
+Task-1
+
+create table sdep( 
+  sname varchar(20), 
+  mark int(10), 
+  rollno int(10) 
+   ); 
+
+insert into sdep(sname,mark,rollno) 
+values('sneha',60,232224), 
+('hari',78,232212), 
+('hema',90,232224),
+('sumi',80,232229),
+('pavi',60,232225);
+
+
+Task-2
+select*
+from student1 left outer join Sdep
+On student1.sname=Sdep.sname;select sname,sdep
+from student1
+where mark=(select max(mark)
+              from Sdep
+              );
+
+Task-3
+
+SELECT Customers.customer_id, Customers.first_name, Orders.amount
+FROM Customers
+JOIN Orders
+ON Customers.customer_id = Orders.customer;
+
